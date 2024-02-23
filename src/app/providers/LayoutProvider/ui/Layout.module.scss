@@ -1,0 +1,23 @@
+.layout {
+	@apply relative;
+
+	> nav,
+	> aside {
+		@apply fixed top-0 bottom-0 overflow-y-auto;
+		width: 20%;
+		max-width: 350px;
+	}
+
+	> nav {
+		@apply left-0 border-r border-r-gray-800;
+	}
+
+	> aside {
+		@apply right-0 border-l border-l-gray-800;
+	}
+
+	.center {
+		@apply min-h-screen p-layout;
+		margin: 0 20%;
+	}
+}
