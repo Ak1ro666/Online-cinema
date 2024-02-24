@@ -1,2 +1,2 @@
+export { firstMenu, userMenu } from './model/menu.data';
 export { MenuContainer } from './ui/MenuContainer';
-export { firstMenu, userMenu } from './modal/menu.data';

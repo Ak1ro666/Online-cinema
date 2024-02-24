@@ -1,6 +1,6 @@
-import '@/app/assets/styles/global.scss';
-
 import type { AppProps } from 'next/app';
+
+import '@/app/assets/styles/global.scss';
 import { RootProvider } from '@/app/providers/RootProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,4 +12,3 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export default MyApp;
-

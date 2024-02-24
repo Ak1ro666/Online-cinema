@@ -9,7 +9,7 @@
 	"tabWidth": 2,
 	"arrowParens": "avoid",
 	"useTabs": true,
-	"endOfLine": "crlf",
+	"endOfLine": "auto",
 	"importOrder": [
 		"<THIRD_PARTY_MODULES>",
 		"^@/screens/(.*)$",

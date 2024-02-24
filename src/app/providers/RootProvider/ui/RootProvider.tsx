@@ -1,6 +1,8 @@
 import { FC, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { Layout } from '@/app/providers/LayoutProvider';
+
 interface IRootProviderProps {
 	children: ReactNode;
 }
@@ -16,6 +18,9 @@ export const RootProvider: FC<IRootProviderProps> = ({ children }) => {
 		}),
 	);
 
-	return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+	return (
+		<QueryClientProvider client={queryClient}>
+			<Layout>{children}</Layout>
+		</QueryClientProvider>
+	);
 };
-
