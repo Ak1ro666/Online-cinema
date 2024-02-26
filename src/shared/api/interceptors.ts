@@ -8,3 +8,8 @@ export const axiosClassic = axios.create({
 		'Content-Type': 'application/json',
 	},
 });
+
+// axiosClassic.interceptors.request.use(config => {
+// config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
+// return config;
+// });

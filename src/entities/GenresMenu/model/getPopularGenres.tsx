@@ -1,6 +1,7 @@
-import { IMenuItem } from '@/shared/ui/Menu';
-import { genresService } from '../../../shared/services/genres.service';
 import { useQuery } from 'react-query';
+
+import { genresService } from '@/shared/services/genres.service';
+import { IMenuItem } from '@/shared/ui/Menu';
 
 export const usePopularGenres = () => {
 	const queryData = useQuery({
@@ -12,7 +13,7 @@ export const usePopularGenres = () => {
 					genre =>
 						({
 							icon: genre.icon,
-							link: genre.link,
+							link: genre.slug,
 							title: genre.name,
 						}) as IMenuItem,
 				)

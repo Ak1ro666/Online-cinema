@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 
-interface IHeading {
+interface IHeading extends HTMLAttributes<HTMLHeadingElement> {
 	title: string;
 	className?: string;
 }
