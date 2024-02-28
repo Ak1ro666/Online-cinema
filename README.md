@@ -18,6 +18,5 @@
 - Prettier
 - CSS-Modules / SCSS / tailwindcss
 - React Skeleton
-- React Pagination
 - Lodash.Debounce
 - Code Splitting, React Loadable
