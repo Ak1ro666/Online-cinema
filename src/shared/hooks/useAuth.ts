@@ -1,7 +1,3 @@
-export const useAuth = () => {
-	return {
-		isAuth: false,
-		isLoading: false,
-		user: null,
-	};
-};
+import { useTypedSelector } from '@/shared/hooks/useTypedSelector';
+
+export const useAuth = () => useTypedSelector(state => state.user);

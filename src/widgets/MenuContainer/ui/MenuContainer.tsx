@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { GenresMenu } from '@/shared/ui/GenresMenu';
-import { Menu } from '@/shared/ui/Menu';
+import { GenresMenu } from '@/shared/ui/model/GenresMenu';
+import { Menu } from '@/shared/ui/model/Menu';
 
 import { firstMenu, userMenu } from '../model/menu.data';
 

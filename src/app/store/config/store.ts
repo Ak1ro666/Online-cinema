@@ -1,9 +1,6 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { reducer as toastrReducer } from 'react-redux-toastr';
+import { configureStore } from '@reduxjs/toolkit';
 
-const rootReducer = combineReducers({
-	toastr: toastrReducer,
-});
+import { rootReducer } from '../model/rootReducer';
 
 export const store = configureStore({
 	reducer: rootReducer,

@@ -1,4 +1,4 @@
-import { TypeMaterialIconName } from '@/shared/ui/MaterialIcon';
+import { TypeMaterialIconName } from '@/shared/ui/ui/MaterialIcon';
 
 export interface IParameters {
 	year: number;

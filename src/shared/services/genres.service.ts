@@ -1,8 +1,8 @@
-import { IGenre } from '@/shared/types/movie.types'
-import { axiosClassic } from '@/shared/api/interceptors'
-import { getPopularGenresUrl } from '@/shared/config/api.config'
+import { axiosClassic } from '@/shared/api/interceptors';
+import { getPopularGenresUrl } from '@/shared/config/api.config';
+import { IGenre } from '@/shared/types/movie.types';
 
-export const genresService = {
+export const GenresService = {
 	async getPopularGenres() {
 		return axiosClassic.get<IGenre[]>(getPopularGenresUrl());
 	},

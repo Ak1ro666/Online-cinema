@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { FavoritesMovies } from '@/shared/ui/FavoritesMovies';
-import { PopularMovies } from '@/shared/ui/PopularMovies';
+import { FavoritesMovies } from '@/shared/ui/model/FavoritesMovies';
+import { PopularMovies } from '@/shared/ui/model/PopularMovies';
 
 export const MoviesContainer: FC = () => {
 	return (

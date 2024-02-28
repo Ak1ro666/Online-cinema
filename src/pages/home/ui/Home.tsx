@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { toastr } from 'react-redux-toastr';
 
-import { Heading } from '@/shared/ui/Heading';
+import { Heading } from '@/shared/ui/ui/Heading';
 import Meta from '@/shared/utils/meta/Meta';
 
 import { IHome } from '../types/home.interface';

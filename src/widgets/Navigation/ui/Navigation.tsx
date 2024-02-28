@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { Logo } from '@/shared/ui/Logo'
-import { MenuContainer } from '@/widgets/MenuContainer'
+
+import { Logo } from '@/shared/ui/ui/Logo';
+
 import styles from './Navigation.module.scss';
+import { MenuContainer } from '@/widgets/MenuContainer';
 
 export const Navigation: FC = () => {
 	return (
@@ -11,4 +13,3 @@ export const Navigation: FC = () => {
 		</nav>
 	);
 };
-

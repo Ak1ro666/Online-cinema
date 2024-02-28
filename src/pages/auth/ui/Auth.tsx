@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { useActions } from '@/shared/hooks/useActions';
 import { useAuth } from '@/shared/hooks/useAuth';
-import { Button } from '@/shared/ui/Button';
-import { Heading } from '@/shared/ui/Heading';
+import { AuthFields } from '@/shared/ui/model/AuthFields';
+import { Button } from '@/shared/ui/ui/Button';
+import { Heading } from '@/shared/ui/ui/Heading';
 import Meta from '@/shared/utils/meta/Meta';
 
 import { IAuthInput } from '../types/auth.interface';
@@ -16,24 +18,25 @@ export const Auth: FC = () => {
 	useAuthRedirect();
 
 	const { isLoading } = useAuth();
+	const { login, register } = useActions();
 
 	const {
-		register: RegisterInput,
+		register: registerInput,
 		handleSubmit,
 		reset,
-		formState: { errors },
+		formState,
 	} = useForm<IAuthInput>({
 		mode: 'onChange',
 	});
-
-	const login = (data: IAuthInput) => {};
-	const register = (data: IAuthInput) => {};
 
 	const onSubmit: SubmitHandler<IAuthInput> = data => {
 		if (type === 'login') login(data);
 		else if (type === 'register' && data) register(data);
 
-		reset();
+		reset({
+			email: '',
+			password: '',
+		});
 	};
 
 	if (isLoading) return <div>Loading...</div>;
@@ -44,7 +47,7 @@ export const Auth: FC = () => {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Heading title="Auth" className="mb-6" />
 
-					{/* fields */}
+					<AuthFields formState={formState} register={registerInput} isPasswordRequired />
 
 					<div className={styles.buttons}>
 						<Button type="submit" onClick={() => setType('login')} disabled={isLoading}>

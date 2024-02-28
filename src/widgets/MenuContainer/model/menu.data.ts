@@ -1,4 +1,4 @@
-import { IMenu } from '@/shared/ui/Menu'
+import { IMenu } from '@/shared/ui/model/Menu';
 
 export const firstMenu: IMenu = {
 	title: 'Menu',

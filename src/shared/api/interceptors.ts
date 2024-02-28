@@ -9,7 +9,8 @@ export const axiosClassic = axios.create({
 	},
 });
 
-// axiosClassic.interceptors.request.use(config => {
-// config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
-// return config;
-// });
+axiosClassic.interceptors.request.use(config => {
+	config.headers.Authorization = `Bearer ${localStorage.getItem('ACTS')}`;
+
+	return config;
+});

@@ -5,7 +5,7 @@
 		@apply mx-auto w-1/2 air-block bg-opacity-80 p-7 text-center;
 
 		.buttons {
-			@apply mt-12 shadow-lg;
+			@apply mt-12;
 
 			> button {
 				&:first-child {
