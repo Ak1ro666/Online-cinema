@@ -1,0 +1,24 @@
+.block {
+	@apply air-block w-2/5;
+}
+.popular {
+	@apply text-center p-5;
+
+	h2 {
+		@apply mb-1;
+	}
+
+	a {
+		display: flex;
+		justify-content: center;
+		height: 276px;
+
+		> img {
+			@apply rounded-layout shadow-lg image-like-bg;
+		}
+	}
+
+	h3 {
+		@apply opacity-50 font-medium mb-3;
+	}
+}

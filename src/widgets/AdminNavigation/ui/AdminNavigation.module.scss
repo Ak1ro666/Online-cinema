@@ -1,0 +1,7 @@
+.nav {
+	@apply air-block w-4/5 mx-auto mb-10;
+
+	> ul {
+		@apply flex justify-evenly items-center;
+	}
+}
