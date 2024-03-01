@@ -2,16 +2,18 @@ import { FC, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 
+import { AuthProvider } from '@/app/providers/AuthProvider';
 import { HeadProvider } from '@/app/providers/HeadProvider';
 import { Layout } from '@/app/providers/LayoutProvider';
 import { ReduxToast } from '@/app/providers/ReduxToast';
 import { store } from '@/app/store';
+import { TypeComponentAuthFields } from '@/pages/auth/types/auth.types';
 
-interface IRootProviderProps {
+type RootProviderProps = TypeComponentAuthFields & {
 	children: ReactNode;
-}
+};
 
-export const RootProvider: FC<IRootProviderProps> = ({ children }) => {
+export const RootProvider: FC<RootProviderProps> = ({ children, Component }) => {
 	const [queryClient] = useState(
 		new QueryClient({
 			defaultOptions: {
@@ -27,7 +29,9 @@ export const RootProvider: FC<IRootProviderProps> = ({ children }) => {
 			<Provider store={store}>
 				<QueryClientProvider client={queryClient}>
 					<ReduxToast />
-					<Layout>{children}</Layout>
+					<AuthProvider Component={Component}>
+						<Layout>{children}</Layout>
+					</AuthProvider>
 				</QueryClientProvider>
 			</Provider>
 		</HeadProvider>

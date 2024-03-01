@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-import { API_URL } from '../config/api.config';
+import { options } from '@/shared/api/api.helpers';
+import { ACCESS_TOKEN } from '@/shared/config/auth.config';
+import { getStoreLocal } from '@/shared/utils/local-storage';
 
-export const axiosClassic = axios.create({
-	baseURL: API_URL,
-	headers: {
-		'Content-Type': 'application/json',
-	},
-});
+export const axiosClassic = axios.create(options);
 
 axiosClassic.interceptors.request.use(config => {
-	config.headers.Authorization = `Bearer ${localStorage.getItem('ACTS')}`;
+	const accessToken = getStoreLocal(ACCESS_TOKEN);
+	if (config?.headers && accessToken) {
+		config.headers.Authorization = `Bearer ${accessToken}`;
+	}
 
 	return config;
 });

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, MouseEvent } from 'react';
 
 import { useActions } from '@/shared/hooks/useActions';
@@ -13,10 +14,10 @@ export const LogoutButton: FC = () => {
 
 	return (
 		<li>
-			<a onClick={handleLogout}>
+			<Link href="#" onClick={handleLogout}>
 				<MaterialIcon name="MdLogout" />
 				<span>Logout</span>
-			</a>
+			</Link>
 		</li>
 	);
 };

@@ -1,13 +1,14 @@
-import { siteName, titleMerge } from '@/shared/config/seo.config';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { FC } from 'react';
 
 import { API_URL } from '@/shared/config/api.config';
-import { FC } from 'react';
-import Head from 'next/head';
-import { ISeo } from '@/shared/utils/meta/meta.interface';
-import LogoImage from '@/app/assets/images/logo.png';
+import { siteName, titleMerge } from '@/shared/config/seo.config';
 import { MetaNoIndex } from '@/shared/utils/meta/MetaNoIndex';
+import { ISeo } from '@/shared/utils/meta/meta.interface';
 import { clearText } from '@/shared/utils/string/clearText';
-import { useRouter } from 'next/router';
+
+import LogoImage from '@/app/assets/images/logo.png';
 
 const Meta: FC<ISeo> = ({ title, description, image, children }) => {
 	const { asPath } = useRouter();

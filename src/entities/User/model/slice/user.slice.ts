@@ -21,7 +21,7 @@ export const userSlice = createSlice({
 			})
 			.addCase(register.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				state.user = payload.user;
+				state.user = payload.data;
 			})
 			.addCase(register.rejected, state => {
 				state.isLoading = false;
@@ -32,7 +32,7 @@ export const userSlice = createSlice({
 			})
 			.addCase(login.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
-				state.user = payload.user;
+				state.user = payload.data;
 			})
 			.addCase(login.rejected, state => {
 				state.isLoading = false;
