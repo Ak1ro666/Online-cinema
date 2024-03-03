@@ -1,8 +1,8 @@
 import { NextAuthPage } from '@/pages/auth/types/auth.types';
-import { Users } from '@/pages/users';
+import { UsersList } from '@/pages/users'
 
 const UserListPage: NextAuthPage = () => {
-	return <Users />;
+	return <UsersList />;
 };
 
 UserListPage.isOnlyAdmin = true;

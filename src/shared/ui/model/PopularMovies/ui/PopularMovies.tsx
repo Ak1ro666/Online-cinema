@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useQuery } from 'react-query';
 
-import { MovieService } from '@/shared/services/movies.service';
+import { MovieService } from '@/shared/services/movie.service';
 import { MoviesList } from '@/shared/ui/model/MoviesList';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 

@@ -3,27 +3,36 @@ import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
 import useDebounce from '@/shared/hooks/useDebounce';
-import { UserService } from '@/shared/services/user.service';
+import { GenreService } from '@/shared/services/genre.service';
 
 import { ITableItem } from '../../../shared/types/admin-table.types';
 
-export const useUsers = () => {
+export const useGenres = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
 	const queryData = useQuery({
-		queryKey: ['user list', debouncedSearch],
-		queryFn: () => UserService.getAll(),
+		queryKey: ['genre list', debouncedSearch],
+		queryFn: () => GenreService.getPopular(),
 		select: ({ data }) =>
 			data
-				.map((user): ITableItem => ({ id: user.id, editUrl: `/user/edit/${user.id}`, email: user.email }))
+				.map(
+					(genre): ITableItem => ({
+						id: genre.id,
+						editUrl: `/genre/edit/${genre.id}`,
+						items: [genre.name, genre.slug],
+					}),
+				)
 				.filter(
-					user =>
-						user.email &&
-						user.email.toLowerCase().replace(/\s+/g, '').includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),
+					genre =>
+						genre.items &&
+						genre.items[0]
+							.toLowerCase()
+							.replace(/\s+/g, '')
+							.includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),
 				),
 		onError: error => {
-			toastr.error(error as unknown as string, 'User list');
+			toastr.error(error as unknown as string, 'Genre list');
 		},
 	});
 
@@ -32,13 +41,13 @@ export const useUsers = () => {
 	};
 
 	const { mutateAsync: deleteAsync } = useMutation({
-		mutationKey: ['delete user'],
-		mutationFn: (userId: number) => UserService.delete(userId),
+		mutationKey: ['delete genre'],
+		mutationFn: (userId: number) => GenreService.delete(userId),
 		onError: error => {
-			toastr.error(error as unknown as string, 'User list');
+			toastr.error(error as unknown as string, 'Genre list');
 		},
 		onSuccess: () => {
-			toastr.success('Delete user', 'delete was successful');
+			toastr.success('Delete genre', 'delete was successful');
 			queryData.refetch();
 		},
 	});

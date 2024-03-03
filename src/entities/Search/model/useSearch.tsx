@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import useDebounce from '@/shared/hooks/useDebounce';
-import { MovieService } from '@/shared/services/movies.service';
+import { MovieService } from '@/shared/services/movie.service';
 
 export const useSearch = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
@@ -10,7 +10,7 @@ export const useSearch = () => {
 
 	const { isSuccess, data } = useQuery({
 		queryKey: ['search', debouncedSearch],
-		queryFn: () => MovieService.allMovies(),
+		queryFn: () => MovieService.getAll(),
 		select: ({ data }) =>
 			data.filter(movie =>
 				movie.title.toLowerCase().replace(/\s+/g, '').includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),

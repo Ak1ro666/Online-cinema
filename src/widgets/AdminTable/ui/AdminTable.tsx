@@ -8,7 +8,6 @@ import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import styles from './AdminTable.module.scss';
 
 interface IAdminTableProps {
-	searchTerm: string;
 	tableItems: ITableItem[];
 	isLoading: boolean;
 	headerItems: string[];
@@ -16,7 +15,7 @@ interface IAdminTableProps {
 }
 
 export const AdminTable: FC<IAdminTableProps> = props => {
-	const { tableItems, isLoading, headerItems, removeHandler, searchTerm } = props;
+	const { tableItems, isLoading, headerItems, removeHandler } = props;
 
 	return (
 		<div>

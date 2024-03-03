@@ -6,7 +6,7 @@ export const UserService = {
 	async getAll() {
 		return await axiosClassic.get<ITableItem[]>(getUsersUrl());
 	},
-	async deleteUser(id: number) {
+	async delete(id: number) {
 		return await axiosClassic.delete(getUsersUrl() + `/${id}`);
 	},
 };

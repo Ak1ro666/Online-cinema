@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { useQuery } from 'react-query';
 
 import { getMoviesUrl } from '@/shared/config/api.config';
-import { MovieService } from '@/shared/services/movies.service';
+import { MovieService } from '@/shared/services/movie.service';
 import { IMovie } from '@/shared/types/movie.types';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import { SubHeading } from '@/shared/ui/ui/SubHeading';
@@ -15,7 +15,7 @@ import styles from './PopularMovie.module.scss';
 export const PopularMovie: FC = () => {
 	const { data: movie, isLoading } = useQuery({
 		queryKey: ['Most popular movie in admin'],
-		queryFn: () => MovieService.allMovies(),
+		queryFn: () => MovieService.getAll(),
 		select: ({ data }): IMovie => data.sort((a, b) => b.rating - a.rating)[0],
 	});
 

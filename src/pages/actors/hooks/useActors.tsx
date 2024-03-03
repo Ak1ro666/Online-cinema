@@ -3,24 +3,33 @@ import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
 import useDebounce from '@/shared/hooks/useDebounce';
-import { UserService } from '@/shared/services/user.service';
+import { ActorService } from '@/shared/services/actor.service';
 
 import { ITableItem } from '../../../shared/types/admin-table.types';
 
-export const useUsers = () => {
+export const useActors = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
 	const queryData = useQuery({
-		queryKey: ['user list', debouncedSearch],
-		queryFn: () => UserService.getAll(),
+		queryKey: ['users list', debouncedSearch],
+		queryFn: () => ActorService.getAll(),
 		select: ({ data }) =>
 			data
-				.map((user): ITableItem => ({ id: user.id, editUrl: `/user/edit/${user.id}`, email: user.email }))
+				.map(
+					(actor): ITableItem => ({
+						id: actor.id,
+						editUrl: `/actor/edit/${actor.id}`,
+						items: [actor.name, String(actor.countMovies)],
+					}),
+				)
 				.filter(
-					user =>
-						user.email &&
-						user.email.toLowerCase().replace(/\s+/g, '').includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),
+					actor =>
+						actor.items &&
+						actor.items[0]
+							.toLowerCase()
+							.replace(/\s+/g, '')
+							.includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),
 				),
 		onError: error => {
 			toastr.error(error as unknown as string, 'User list');
@@ -32,13 +41,13 @@ export const useUsers = () => {
 	};
 
 	const { mutateAsync: deleteAsync } = useMutation({
-		mutationKey: ['delete user'],
-		mutationFn: (userId: number) => UserService.delete(userId),
+		mutationKey: ['delete actor'],
+		mutationFn: (userId: number) => ActorService.delete(userId),
 		onError: error => {
 			toastr.error(error as unknown as string, 'User list');
 		},
 		onSuccess: () => {
-			toastr.success('Delete user', 'delete was successful');
+			toastr.success('Delete actor', 'delete was successful');
 			queryData.refetch();
 		},
 	});

@@ -7,13 +7,15 @@ export interface IParameters {
 }
 
 export interface IActor {
+	id: number;
 	photo: string;
 	name: string;
 	countMovies: number;
-	link: string;
+	slug: string;
 }
 
 export interface IGenre {
+	id: number;
 	name: string;
 	slug: string;
 	description: string;
@@ -21,6 +23,7 @@ export interface IGenre {
 }
 
 export interface IMovie {
+	id: number;
 	poster: string;
 	bigPoster: string;
 	title: string;

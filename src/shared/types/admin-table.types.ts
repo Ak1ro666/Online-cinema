@@ -1,7 +1,8 @@
 export interface ITableItem {
 	id: number;
 	editUrl: string;
-	email: string;
+	email?: string;
+	items?: string[];
 }
 
 export interface IAdminTableItem {
