@@ -2,8 +2,9 @@ import { FC, useEffect, useState } from 'react';
 
 import { getAdminHomeUrl } from '@/shared/config/url.config';
 import { useAuth } from '@/shared/hooks/useAuth';
-import { LogoutButton } from '@/shared/ui/model/LogoutButton';
 import { MenuItem } from '@/shared/ui/model/MenuItem';
+
+import { LogoutButton } from '@/features/logoutSystem';
 
 export const AuthItems: FC = () => {
 	const [hydrated, setHydrated] = useState(false);

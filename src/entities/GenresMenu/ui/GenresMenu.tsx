@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Menu } from '@/shared/ui/model/Menu';
-import { SkeletonLoader } from '@/shared/ui/model/SkeletonLoader';
+import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 
 import { usePopularGenres } from '@/entities/GenresMenu';
 

@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { useQuery } from 'react-query';
+
 import { MovieService } from '@/shared/services/movies.service';
 import { MoviesList } from '@/shared/ui/model/MoviesList';
-import { SkeletonLoader } from '@/shared/ui/model/SkeletonLoader';
-import { useQuery } from 'react-query';
+import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 
 export const PopularMovies: FC = () => {
 	const { isLoading, data: popularMovies } = useQuery({

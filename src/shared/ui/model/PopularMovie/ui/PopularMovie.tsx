@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 import { getMoviesUrl } from '@/shared/config/api.config';
 import { MovieService } from '@/shared/services/movies.service';
 import { IMovie } from '@/shared/types/movie.types';
-import { SkeletonLoader } from '@/shared/ui/model/SkeletonLoader';
+import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import { SubHeading } from '@/shared/ui/ui/SubHeading';
 
 import styles from './PopularMovie.module.scss';
@@ -24,7 +24,7 @@ export const PopularMovie: FC = () => {
 			<SubHeading title="The most popular movie" />
 
 			{isLoading ? (
-				<SkeletonLoader className="h-48" />
+				<SkeletonLoader className="h-48" width={285} />
 			) : (
 				movie && (
 					<>

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { AuthItems } from '@/shared/ui/model/AuthItems';
 import { MenuItem } from '@/shared/ui/model/MenuItem';
 
 import { IMenu } from '../types/menu.interface';
 
 import styles from '@/app/assets/styles/Menu.module.scss';
+import { AuthItems } from '@/widgets/AuthItems';
 
 export const Menu: FC<IMenu> = ({ title, items }) => {
 	return (

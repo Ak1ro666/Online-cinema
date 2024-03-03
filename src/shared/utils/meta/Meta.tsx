@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import { FC, HTMLAttributes } from 'react';
 
 import { API_URL } from '@/shared/config/api.config';
 import { siteName, titleMerge } from '@/shared/config/seo.config';
@@ -20,6 +21,7 @@ const Meta: FC<ISeo> = ({ title, description, image, children }) => {
 				<title itemProp="headline">{titleMerge(title)}</title>
 				{description ? (
 					<>
+						<link rel="icon" href="/favicons/favicon.ico" />
 						<title itemProp="headline">{titleMerge(title)}</title>
 						<meta itemProp="description" name="description" content={clearText(description, 152)} />
 						<link rel="canonical" href={currentUrl} />

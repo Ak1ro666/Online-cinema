@@ -1,11 +1,10 @@
 import { FC } from 'react';
 
-import { Statistics } from '@/shared/ui/model/Statistics';
 import { Heading } from '@/shared/ui/ui/Heading';
 import Meta from '@/shared/utils/meta/Meta';
 
-import styles from './Admin.module.scss';
 import { AdminNavigation } from '@/widgets/AdminNavigation/ui/AdminNavigation';
+import { Statistics } from '@/widgets/Statistics';
 
 export const Admin: FC = () => {
 	return (

@@ -11,7 +11,10 @@ export const useSearch = () => {
 	const { isSuccess, data } = useQuery({
 		queryKey: ['search', debouncedSearch],
 		queryFn: () => MovieService.allMovies(),
-		select: ({ data }) => data.filter(movie => movie.title.toLowerCase().includes(debouncedSearch.toLowerCase())),
+		select: ({ data }) =>
+			data.filter(movie =>
+				movie.title.toLowerCase().replace(/\s+/g, '').includes(debouncedSearch.toLowerCase().replace(/\s+/g, '')),
+			),
 		enabled: !!debouncedSearch,
 	});
 
