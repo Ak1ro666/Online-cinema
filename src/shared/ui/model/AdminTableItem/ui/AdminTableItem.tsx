@@ -11,7 +11,7 @@ export const AdminTableItem: FC<IAdminTableItem> = ({ removeHandler, tableItem }
 			{tableItem.email ? (
 				<div>{tableItem.email}</div>
 			) : (
-				tableItem.items && tableItem.items.map(value => <div>{value}</div>)
+				tableItem.items && tableItem.items.map(value => <div key={value}>{value}</div>)
 			)}
 			<AdminActions editUrl={tableItem.editUrl} removeHandler={() => removeHandler(tableItem.id)} />
 		</div>

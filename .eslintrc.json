@@ -1,6 +1,7 @@
 {
-	"extends": "next/core-web-vitals",
+	"extends": ["next/core-web-vitals", "next", "prettier"],
 	"rules": {
-		"react/display-name": [0, { "ignoreTranspilerName": true }]
+		"react/display-name": [0, { "ignoreTranspilerName": true }],
+		"react-hooks/exhaustive-deps": "off"
 	}
 }
