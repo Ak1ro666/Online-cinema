@@ -16,7 +16,9 @@ export const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
 			</label>
 			{error && typeof error === 'string' && <div className={styles.error}>{error}</div>}
 
-			{error && typeof error !== 'string' && 'message' in error && <div className={styles.error}>{error.message}</div>}
+			{error && typeof error !== 'string' && 'message' in error && (
+				<div className={styles.error}>{error.message as unknown as string}</div>
+			)}
 
 			{error && typeof error !== 'string' && !('message' in error) && (
 				<div className={styles.error}>Some other error occurred</div>

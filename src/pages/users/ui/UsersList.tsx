@@ -23,7 +23,6 @@ export const UsersList: FC = () => {
 				<SkeletonLoader className="mt-8" height={46} />
 			) : (
 				<AdminTable
-					searchTerm={searchTerm}
 					removeHandler={deleteAsync}
 					isLoading={isLoading}
 					headerItems={['Email']}
