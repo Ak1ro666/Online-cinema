@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/router';
-import { FC, HTMLAttributes } from 'react';
+import { FC } from 'react';
 
 import { API_URL } from '@/shared/config/api.config';
 import { siteName, titleMerge } from '@/shared/config/seo.config';
@@ -14,6 +13,15 @@ import LogoImage from '@/app/assets/images/logo.png';
 const Meta: FC<ISeo> = ({ title, description, image, children }) => {
 	const { asPath } = useRouter();
 	const currentUrl = `${API_URL}${asPath}`;
+
+	let imageUrl: string | undefined = undefined;
+	if (image !== undefined) {
+		if (typeof image === 'string') {
+			imageUrl = image;
+		} else {
+			imageUrl = LogoImage.src;
+		}
+	}
 
 	return (
 		<>
@@ -28,7 +36,8 @@ const Meta: FC<ISeo> = ({ title, description, image, children }) => {
 						<meta property="og:locale" content="en" />
 						<meta property="og:title" content={titleMerge(title)} />
 						<meta property="og:url" content={currentUrl} />
-						<meta property="og:image" content={image || LogoImage} />
+						<meta property="og:image" content={imageUrl} />
+
 						<meta property="og:site_name" content={siteName} />
 						<meta property="og:description" content={clearText(description, 197)} />
 					</>
