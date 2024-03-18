@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 
-import styles from './AdminHeader.module.scss';
 import { SearchField } from '@/entities/Search/ui/SearchField';
+import styles from './AdminHeader.module.scss';
 
 interface IAdminHeaderProps {
 	searchTerm: string;

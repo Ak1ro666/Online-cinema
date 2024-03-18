@@ -1,16 +1,14 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
-import { toastr } from 'react-redux-toastr';
 
-import useDebounce from '@/shared/hooks/useDebounce';
 import { GenreService } from '@/shared/services/genre.service';
-
 import { ITableItem } from '../../../shared/types/admin-table.types';
+import { toastr } from 'react-redux-toastr';
+import useDebounce from '@/shared/hooks/useDebounce';
 
 export const useGenres = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
-
 	const queryData = useQuery({
 		queryKey: ['genre list', debouncedSearch],
 		queryFn: () => GenreService.getPopular(),
@@ -19,7 +17,7 @@ export const useGenres = () => {
 				.map(
 					(genre): ITableItem => ({
 						id: genre.id,
-						editUrl: `/genre/edit/${genre.id}`,
+						editUrl: `/manage/genre/edit/${genre.id}`,
 						items: [genre.name, genre.slug],
 					}),
 				)
@@ -44,7 +42,7 @@ export const useGenres = () => {
 		mutationKey: ['delete genre'],
 		mutationFn: (userId: number) => GenreService.delete(userId),
 		onError: error => {
-			toastr.error(error as unknown as string, 'Genre list');
+			toastr.error(error as unknown as string, 'Delete genre');
 		},
 		onSuccess: () => {
 			toastr.success('Delete genre', 'delete was successful');

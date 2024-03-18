@@ -3,7 +3,7 @@
 
 	> nav,
 	> aside {
-		@apply fixed top-0 bottom-0 overflow-y-auto;
+		@apply fixed top-0 bottom-0 overflow-y-hidden;
 		width: 20%;
 		max-width: 350px;
 	}

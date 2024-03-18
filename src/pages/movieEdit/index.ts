@@ -1,0 +1,1 @@
+export { MovieEdit } from './ui/MovieEdit'

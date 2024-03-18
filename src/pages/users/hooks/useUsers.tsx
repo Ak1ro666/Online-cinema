@@ -16,7 +16,7 @@ export const useUsers = () => {
 		queryFn: () => UserService.getAll(),
 		select: ({ data }) =>
 			data
-				.map((user): ITableItem => ({ id: user.id, editUrl: `/user/edit/${user.id}`, email: user.email }))
+				.map((user): ITableItem => ({ id: user.id, editUrl: `/manage/user/edit/${user.id}`, email: user.email }))
 				.filter(
 					user =>
 						user.email &&

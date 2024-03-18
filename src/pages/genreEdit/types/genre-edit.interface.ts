@@ -1,3 +1,3 @@
 import { IGenre } from '@/shared/types/movie.types';
 
-export interface IGenreEditInput extends Omit<IGenre, 'id'> {}
+export interface IGenreEdit extends Omit<IGenre, 'id'> {}

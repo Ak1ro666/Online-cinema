@@ -1,13 +1,12 @@
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { FC, ReactNode, useEffect } from 'react';
 
 import { ACCESS_TOKEN } from '@/shared/config/auth.config';
+import { TypeComponentAuthFields } from '@/pages/auth/types/auth.types';
+import dynamic from 'next/dynamic';
+import { getStoreLocal } from '@/shared/utils/local-storage';
 import { useActions } from '@/shared/hooks/useActions';
 import { useAuth } from '@/shared/hooks/useAuth';
-import { getStoreLocal } from '@/shared/utils/local-storage';
-
-import { TypeComponentAuthFields } from '@/pages/auth/types/auth.types';
+import { useRouter } from 'next/router';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), {
 	ssr: false,

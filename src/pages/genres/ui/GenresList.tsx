@@ -1,14 +1,12 @@
-import { FC } from 'react';
-
-import { ITableItem } from '@/shared/types/admin-table.types';
 import { AdminHeader } from '@/shared/ui/model/AdminHeader';
-import { Heading } from '@/shared/ui/ui/Heading';
-import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
-import Meta from '@/shared/utils/meta/Meta';
-
-import { useGenres } from '@/pages/genres/hooks/useGenres';
 import { AdminNavigation } from '@/widgets/AdminNavigation';
 import { AdminTable } from '@/widgets/AdminTable';
+import { FC } from 'react';
+import { Heading } from '@/shared/ui/ui/Heading';
+import { ITableItem } from '@/shared/types/admin-table.types';
+import Meta from '@/shared/utils/meta/Meta';
+import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
+import { useGenres } from '@/pages/genres/hooks/useGenres';
 
 export const GenresList: FC = () => {
 	const { isLoading, data, handleSearch, searchTerm, deleteAsync } = useGenres();

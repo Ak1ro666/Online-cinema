@@ -19,7 +19,7 @@ export const useMovies = () => {
 				.map(
 					(movie): ITableItem => ({
 						id: movie.id,
-						editUrl: `/movie/edit/${movie.id}`,
+						editUrl: `/manage/movie/edit/${movie.id}`,
 						items: [movie.title, getGenresList(movie.genres), String(movie.rating)],
 					}),
 				)

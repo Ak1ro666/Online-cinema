@@ -1,8 +1,8 @@
 import { TypeMaterialIconName } from '@/shared/ui/ui/MaterialIcon';
 
 export interface IParameters {
-	year: number;
-	duration: number;
+	year: string;
+	duration: string;
 	country: string;
 }
 
@@ -10,7 +10,7 @@ export interface IActor {
 	id: number;
 	photo: string;
 	name: string;
-	countMovies: number;
+	countMovies: string;
 	slug: string;
 }
 
