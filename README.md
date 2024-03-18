@@ -1,5 +1,7 @@
 # Online cinema from Ak1ro
 
+Деплой - online-cinema-zeta.vercel.app
+
 Это мой новые проект на Next.
 
 # 🛠 Технологии:
@@ -21,4 +23,4 @@
 - Lodash.Debounce
 - Code Splitting, React Loadable
 
-Деплой - online-cinema-zeta.vercel.app
+
