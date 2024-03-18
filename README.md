@@ -20,3 +20,5 @@
 - React Skeleton
 - Lodash.Debounce
 - Code Splitting, React Loadable
+
+Деплой - online-cinema-zeta.vercel.app
