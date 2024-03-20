@@ -1,5 +1,5 @@
 import { IActor } from '@/shared/types/movie.types';
-import { IActorEdit } from '@/pages/actorEdit/types/actor-edit.interface'
+import { IActorEdit } from '@/pages/actorEdit/types/actor-edit.interface';
 import { axiosClassic } from '@/shared/api/interceptors';
 import { getActorsUrl } from '@/shared/config/api.config';
 

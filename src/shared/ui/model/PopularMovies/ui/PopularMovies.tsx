@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import { useQuery } from 'react-query';
-
 import { MovieService } from '@/shared/services/movie.service';
 import { MoviesList } from '@/shared/ui/model/MoviesList';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
+import { useQuery } from 'react-query';
 
 export const PopularMovies: FC = () => {
 	const { isLoading, data: popularMovies } = useQuery({
@@ -17,6 +16,6 @@ export const PopularMovies: FC = () => {
 			<SkeletonLoader count={3} className="h-28 mb-4" />
 		</div>
 	) : (
-		<MoviesList link="/trending" movies={popularMovies || []} title="Popular movies" />
+		<MoviesList link="/trending" movies={popularMovies?.slice(0, 3) || []} title="Popular movies" />
 	);
 };

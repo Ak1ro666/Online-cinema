@@ -1,7 +1,6 @@
-import { useQuery } from 'react-query';
-
 import { GenreService } from '@/shared/services/genre.service';
 import { IMenuItem } from '@/shared/ui/model/Menu';
+import { useQuery } from 'react-query';
 
 export const usePopularGenres = () => {
 	const queryData = useQuery({

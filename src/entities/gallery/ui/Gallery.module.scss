@@ -1,0 +1,8 @@
+.gallery {
+	@apply flex items-center overflow-x-auto flex-nowrap py-3;
+	-webkit-overflow-scrolling: touch;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

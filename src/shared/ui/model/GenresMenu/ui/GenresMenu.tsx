@@ -1,9 +1,8 @@
 import { FC } from 'react';
 
+import { usePopularGenres } from '@/shared/ui/model/GenresMenu';
 import { Menu } from '@/shared/ui/model/Menu';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
-
-import { usePopularGenres } from '@/entities/GenresMenu';
 
 export const GenresMenu: FC = () => {
 	const { isLoading, data } = usePopularGenres();
