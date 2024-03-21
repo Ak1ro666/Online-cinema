@@ -1,6 +1,6 @@
 # Online cinema from Ak1ro
 
-Деплой - online-cinema-zeta.vercel.app
+Деплой - https://online-cinema-zeta.vercel.app
 
 Это мой новые проект на Next.
 
