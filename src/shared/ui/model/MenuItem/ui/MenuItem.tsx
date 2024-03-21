@@ -8,9 +8,9 @@ import { MaterialIcon } from '@/shared/ui/ui/MaterialIcon';
 
 import styles from '@/app/assets/styles/Menu.module.scss';
 
-export const MenuItem: FC<IMenuItem> = ({ icon, title, link }) => {
+export const MenuItem: FC<IMenuItem> = ({ icon, title, link: linkItem }) => {
 	const { asPath } = useRouter();
-
+	const link = linkItem.includes('/') ? linkItem : `/genre/${linkItem}`;
 	return (
 		<li
 			className={cn({

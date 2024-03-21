@@ -1,10 +1,13 @@
 import { FC } from 'react';
-import { Gallery } from '@/entities/gallery';
+
 import { Heading } from '@/shared/ui/ui/Heading';
-import { IHome } from '../types/home.interface';
-import Meta from '@/shared/utils/meta/Meta';
-import { Slider } from '@/entities/Slider';
 import { SubHeading } from '@/shared/ui/ui/SubHeading';
+import Meta from '@/shared/utils/meta/Meta';
+
+import { IHome } from '../types/home.interface';
+
+import { Gallery } from '@/entities/Gallery';
+import { Slider } from '@/entities/Slider';
 
 export const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
 	return (

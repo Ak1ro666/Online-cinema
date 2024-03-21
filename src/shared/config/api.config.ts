@@ -1,10 +1,10 @@
 export const API_URL = process.env.API_URL;
 
-export const getAuthUrl = () => '/auth';
-export const getRegisterUrl = () => '/register';
-export const getUsersUrl = () => '/users';
-export const getMoviesUrl = () => `/movies`;
-export const getPopularMoviesUrl = () => `/movies-popular`;
-export const getActorsUrl = () => '/actors';
-export const getRatingsUrl = () => '/ratings';
-export const getGenresUrl = () => '/genres';
+export const getAuthUrl = (slug: string = '') => `/auth${slug}`;
+export const getRegisterUrl = (slug: string = '') => `/register${slug}`;
+export const getUsersUrl = (slug: string = '') => `/users${slug}`;
+export const getMoviesUrl = (slug: string = '') => `/movies${slug}`;
+export const getPopularMoviesUrl = (slug: string = '') => `/movies-popular${slug}`;
+export const getActorsUrl = (slug: string = '') => `/actors${slug}`;
+export const getRatingsUrl = (slug: string = '') => `/ratings${slug}`;
+export const getGenresUrl = (slug: string = '') => `/genres${slug}`;

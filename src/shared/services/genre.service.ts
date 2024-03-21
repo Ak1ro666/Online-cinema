@@ -7,8 +7,11 @@ export const GenreService = {
 	async getPopular() {
 		return await axiosClassic.get<IGenre[]>(getGenresUrl());
 	},
+	async getBySlug(slug: string) {
+		return await axiosClassic.get<IGenre>(getGenresUrl(`?slug=${slug}`));
+	},
 	async getById(id: number) {
-		return await axiosClassic.get<IGenreEdit>(getGenresUrl() + `/${id}`);
+		return await axiosClassic.get<IGenreEdit>(getGenresUrl(`/${id}`));
 	},
 	async update(id: number, data: IGenreEdit) {
 		return await axiosClassic.patch(getGenresUrl() + `/${id}`, data);

@@ -9,15 +9,9 @@ import { Input } from '@/shared/ui/ui/Input';
 import Meta from '@/shared/utils/meta/Meta';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import { SlugField } from '@/shared/ui/model/SlugField';
-import dynamic from 'next/dynamic';
 import formStyles from '@/app/assets/styles/admin-form.module.scss';
 import { generateSlug } from '@/shared/utils/string/generateSlug';
-import { stripHtml } from 'string-strip-html';
 import { useActorEdit } from '@/pages/actorEdit/hooks/useActorEdit';
-
-const DynamicTextEditor = dynamic(() => import('@/entities/TextEditor').then(module => module.TextEditor), {
-	ssr: false,
-});
 
 export const ActorEdit: FC = () => {
 	const {
@@ -26,7 +20,6 @@ export const ActorEdit: FC = () => {
 		formState: { errors },
 		setValue,
 		getValues,
-		control,
 	} = useForm<IActorEdit>({
 		mode: 'onChange',
 	});

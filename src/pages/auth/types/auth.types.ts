@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { NextPage } from 'next';
 
 export type TypeRoles = {

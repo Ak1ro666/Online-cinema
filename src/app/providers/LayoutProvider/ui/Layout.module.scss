@@ -3,9 +3,13 @@
 
 	> nav,
 	> aside {
-		@apply fixed top-0 bottom-0 overflow-y-hidden;
+		@apply fixed top-0 bottom-0 overflow-y-auto;
 		width: 20%;
 		max-width: 350px;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 
 	> nav {
