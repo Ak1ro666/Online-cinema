@@ -1,13 +1,14 @@
 import { FC } from 'react';
-
 import { Heading } from '@/shared/ui/ui/Heading';
-import { SubHeading } from '@/shared/ui/ui/SubHeading';
-import Meta from '@/shared/utils/meta/Meta';
-
 import { IHome } from '../types/home.interface';
-
-import { Gallery } from '@/entities/Gallery';
+import Meta from '@/shared/utils/meta/Meta';
 import { Slider } from '@/entities/Slider';
+import { SubHeading } from '@/shared/ui/ui/SubHeading';
+import dynamic from 'next/dynamic'
+
+const GalleryDynamic = dynamic(() => import('@/entities/Gallery').then(module => module.Gallery), {
+	ssr: false
+})
 
 export const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
 	return (
@@ -21,12 +22,12 @@ export const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
 
 			<div className="my-10">
 				<SubHeading title="Trending now" />
-				{trendingMovies.length && <Gallery items={trendingMovies} />}
+				{trendingMovies.length && <GalleryDynamic items={trendingMovies} />}
 			</div>
 
 			<div>
 				<SubHeading title="Best actors" />
-				{actors.length && <Gallery items={actors} />}
+				{actors.length && <GalleryDynamic items={actors} />}
 			</div>
 		</Meta>
 	);
