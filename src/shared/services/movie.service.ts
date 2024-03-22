@@ -24,11 +24,11 @@ export const MovieService = {
 	},
 
 	async getById(id: number) {
-		return await axiosClassic.get<IMovieEdit>(getMoviesUrl() + `/${id}`);
+		return await axiosClassic.get<IMovieEdit>(getMoviesUrl(`/${id}`));
 	},
 
 	async update(id: number, data: IMovieEdit) {
-		return await axiosClassic.patch(getMoviesUrl() + `/${id}`, data);
+		return await axiosClassic.patch(getMoviesUrl(`/${id}`), data);
 	},
 
 	async delete(id: number) {
