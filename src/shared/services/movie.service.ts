@@ -3,7 +3,6 @@ import { getMoviesUrl, getPopularMoviesUrl } from '@/shared/config/api.config';
 import { IMovie } from '@/shared/types/movie.types';
 import { IMovieEdit } from '@/pages/movieEdit/types/movie-edit.interface';
 import { axiosClassic } from '@/shared/api/interceptors';
-import { getMovieUrl } from '@/shared/config/url.config';
 
 export const MovieService = {
 	async getAll() {
@@ -11,12 +10,12 @@ export const MovieService = {
 	},
 
 	async getByGenres(genreSlug: string) {
-		console.log(genreSlug)
-		return await axiosClassic.get<IMovie[]>(getMovieUrl(`?genres.name=${genreSlug}`));
+		return await axiosClassic.get<IMovie[]>(getMoviesUrl(`?genres.name=${genreSlug}`));
 	},
 
-	async getByActor(actorId: string) {
-		return await axiosClassic.get<IMovie[]>(getMovieUrl(`?actors.id=${actorId}`));
+	async getByActor(actorName: string) {
+		console.log(actorName)
+		return await axiosClassic.get<IMovie[]>(getMoviesUrl(`?actors.name=${actorName}`));
 	},
 
 	async getMostPopularMovies() {
@@ -32,6 +31,6 @@ export const MovieService = {
 	},
 
 	async delete(id: number) {
-		return await axiosClassic.delete(getMoviesUrl() + `/${id}`);
+		return await axiosClassic.delete(getMoviesUrl(`/${id}`));
 	},
 };

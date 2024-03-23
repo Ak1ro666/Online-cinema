@@ -12,6 +12,7 @@ export interface IActor {
 	name: string;
 	countMovies: string;
 	slug: string;
+	genres: string[]
 }
 
 export interface IGenre {

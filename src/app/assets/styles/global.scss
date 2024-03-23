@@ -48,6 +48,8 @@ button {
 
 :root {
 	--primary-color: #e30b13;
+	--scrollbar-thumb-color: #66676E; /* Основной цвет */
+  --scrollbar-track-color: #242529; /* Цвет трека */
 }
 
 input[type='file'],
@@ -57,4 +59,30 @@ input[type='file']::-webkit-file-upload-button {
 
 input:focus {
 	box-shadow: none !important;
+}
+
+/* Стили скроллбара */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+/* WebKit */
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+}
+
+/* IE и Edge */
+* {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }

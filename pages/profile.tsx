@@ -1,17 +1,16 @@
+import Meta from '@/shared/utils/meta/Meta';
+import type { NextAuthPage } from '@/pages/auth/types/auth.types';
+import { Profile } from '@/pages/profile'
 import React from 'react';
 
-import Meta from '@/shared/utils/meta/Meta';
-
-import type { NextAuthPage } from '@/pages/auth/types/auth.types';
-
-const Profile: NextAuthPage = () => {
+const ProfilePage: NextAuthPage = () => {
 	return (
 		<Meta title="Profile" description="Online theater profile page">
-			<div>Profile</div>
+			<Profile />
 		</Meta>
 	);
 };
 
-Profile.isOnlyUser = true;
+ProfilePage.isOnlyUser = true;
 
-export default Profile;
+export default ProfilePage;

@@ -1,7 +1,9 @@
+import { getMyProfileUrl, getUsersUrl } from '@/shared/config/api.config';
+
+import { IProfileInput } from '@/pages/profile/types/profile.interface'
 import { ITableItem } from '@/shared/types/admin-table.types';
 import { IUserEdit } from '@/pages/userEdit/types/user-edit.interface';
 import { axiosClassic } from '@/shared/api/interceptors';
-import { getUsersUrl } from '@/shared/config/api.config';
 
 export const UserService = {
 	async getAll() {
@@ -9,6 +11,12 @@ export const UserService = {
 	},
 	async getById(id: number) {
 		return await axiosClassic.get<IUserEdit[]>(getUsersUrl(`?id=${id}`));
+	},
+	async getMyProfile(){
+		return await axiosClassic.get<IProfileInput>(getMyProfileUrl())
+	},
+	async updateProfile(emailUser: string, data: IProfileInput){
+		return await axiosClassic.patch<IProfileInput>(getUsersUrl(`?email=${emailUser}`), data)
 	},
 	async update(id: number, data: IUserEdit) {
 		return await axiosClassic.patch(getUsersUrl(`/${id}`), data);

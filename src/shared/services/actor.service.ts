@@ -8,12 +8,15 @@ export const ActorService = {
 		return axiosClassic.get<IActor[]>(getActorsUrl());
 	},
 	async getById(id: number) {
-		return await axiosClassic.get<IActorEdit>(getActorsUrl() + `/${id}`);
+		return await axiosClassic.get<IActorEdit>(getActorsUrl(`/${id}`));
+	},
+	async getBySlug(slug: string) {
+		return await axiosClassic.get<IActor>(getActorsUrl(`?slug=${slug}`));
 	},
 	async update(id: number, data: IActorEdit) {
-		return await axiosClassic.patch(getActorsUrl() + `/${id}`, data);
+		return await axiosClassic.patch(getActorsUrl(`/${id}`), data);
 	},
 	async delete(id: number) {
-		return await axiosClassic.delete(getActorsUrl() + `/${id}`);
+		return await axiosClassic.delete(getActorsUrl(`/${id}`));
 	},
 };

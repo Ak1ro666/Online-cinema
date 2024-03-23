@@ -1,14 +1,13 @@
 import { GetStaticProps, NextPage } from 'next';
-
 import { getActorUrl, getMovieUrl } from '@/shared/config/url.config';
+
 import { ActorService } from '@/shared/services/actor.service';
+import { Home } from '@/pages/home';
+import { IGalleryItem } from '@/entities/Gallery/types/gallery.interface';
+import { IHome } from '@/pages/home/types/home.interface';
+import { ISlide } from '@/entities/Slider/types/slider.interface';
 import { MovieService } from '@/shared/services/movie.service';
 import { getGenresList } from '@/shared/utils/movie/getGenresListEach';
-
-import { IGalleryItem } from '@/entities/Gallery/types/gallery.interface';
-import { ISlide } from '@/entities/Slider/types/slider.interface';
-import { Home } from '@/pages/home';
-import { IHome } from '@/pages/home/types/home.interface';
 
 const HomePage: NextPage<IHome> = ({ slides, actors, trendingMovies }) => {
 	return <Home slides={slides} actors={actors} trendingMovies={trendingMovies} />;
@@ -31,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		const actors: IGalleryItem[] = dataActors.slice(0, 7).map(a => ({
 			name: a.name,
 			posterPath: a.photo,
-			link: getActorUrl(a.slug),
+			link: getActorUrl(`/${a.slug}`),
 			content: {
 				title: a.name,
 				subTitle: `+${a.countMovies} movies`,

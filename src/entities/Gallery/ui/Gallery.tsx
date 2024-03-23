@@ -1,11 +1,10 @@
 import { FC } from 'react';
-
 import { GalleryItem } from '@/shared/ui/model/GalleyItem';
-
-import styles from './Gallery.module.scss';
 import { IGalleryItem } from '@/entities/Gallery/types/gallery.interface';
+import styles from './Gallery.module.scss';
 
 export const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
+
 	return (
 		<div className={styles.gallery}>
 			{items.map(item => (

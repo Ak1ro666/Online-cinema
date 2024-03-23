@@ -14,9 +14,9 @@ export const GenreService = {
 		return await axiosClassic.get<IGenreEdit>(getGenresUrl(`/${id}`));
 	},
 	async update(id: number, data: IGenreEdit) {
-		return await axiosClassic.patch(getGenresUrl() + `/${id}`, data);
+		return await axiosClassic.patch(getGenresUrl(`/${id}`), data);
 	},
 	async delete(id: number) {
-		return await axiosClassic.delete(getGenresUrl() + `/${id}`);
+		return await axiosClassic.delete(getGenresUrl(`/${id}`));
 	},
 };

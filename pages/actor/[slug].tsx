@@ -1,30 +1,26 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { IGenre, IMovie } from '@/shared/types/movie.types';
+import { IActor, IMovie } from '@/shared/types/movie.types';
 
+import { ActorService } from '@/shared/services/actor.service';
 import { Catalog } from '@/widgets/Catalog';
-import { GenreService } from '@/shared/services/genre.service';
 import { MovieService } from '@/shared/services/movie.service';
 import { NextAuthPage } from '@/pages/auth/types/auth.types';
 import NotFoundPage from 'pages/404';
 
 interface IGenrePage {
 	movies: IMovie[];
-	genre: IGenre[] | undefined;
+	actor: IActor[] | undefined;
 }
 
-const GenrePage: NextAuthPage<IGenrePage> = ({ movies, genre }) => {
-	return genre ? (
-		<Catalog title={genre[0].name} description={genre[0].description} movies={movies || []} />
-	) : (
-		<NotFoundPage />
-	);
+const GenrePage: NextAuthPage<IGenrePage> = ({ movies, actor }) => {
+	return actor ? <Catalog title={actor[0].name} movies={movies || []} /> : <NotFoundPage />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const { data: genres } = await GenreService.getPopular();
+	const { data: genres } = await ActorService.getAll();
 
-	const paths = genres.map((genre: IGenre) => ({
-		params: { slug: genre.slug, fallback: 'blocking' },
+	const paths = genres.map((actor: IActor) => ({
+		params: { slug: actor.slug, fallback: 'blocking' },
 	}));
 
 	return {
@@ -35,15 +31,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
-		const { data: genre } = await GenreService.getBySlug(String(params?.slug));
-		const { data: movies } = await MovieService.getByGenres(
+		const { data: actor } = await ActorService.getBySlug(String(params?.slug));
+		const { data: movies } = await MovieService.getByActor(
 			String(params?.slug).charAt(0).toUpperCase() + String(params?.slug).slice(1),
 		);
 
 		return {
 			props: {
 				movies,
-				genre,
+				actor,
 			},
 		};
 	} catch (error) {
