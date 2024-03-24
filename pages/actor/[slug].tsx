@@ -9,24 +9,35 @@ import NotFoundPage from 'pages/404';
 
 interface IGenrePage {
 	movies: IMovie[];
-	actor: IActor[] | undefined;
+	actor: IActor[];
 }
 
 const GenrePage: NextAuthPage<IGenrePage> = ({ movies, actor }) => {
-	return actor ? <Catalog title={actor[0].name} movies={movies || []} /> : <NotFoundPage />;
+	console.log(movies)
+
+	return actor ? <Catalog title={actor[0].name || ''} movies={movies || []} /> : <NotFoundPage />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const { data: genres } = await ActorService.getAll();
+	try {
+		const { data: genres } = await ActorService.getAll();
 
 	const paths = genres.map((actor: IActor) => ({
-		params: { slug: actor.slug, fallback: 'blocking' },
+		params: { slug: actor.slug },
 	}));
+
 
 	return {
 		paths,
-		fallback: false,
-	};
+		fallback: "blocking"
+	}
+	
+	} catch (error) {
+		return {
+			paths: [],
+			fallback: false,
+		};	
+	}
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

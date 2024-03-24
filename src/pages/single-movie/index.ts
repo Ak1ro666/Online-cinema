@@ -1,0 +1,1 @@
+export { SingleMovie } from './ui/SingleMovie'

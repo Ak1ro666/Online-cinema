@@ -14,8 +14,11 @@ export const MovieService = {
 	},
 
 	async getByActor(actorName: string) {
-		console.log(actorName)
 		return await axiosClassic.get<IMovie[]>(getMoviesUrl(`?actors.name=${actorName}`));
+	},
+
+	async getBySlug(slug: string) {
+		return await axiosClassic.get<IMovie[]>(getMoviesUrl(`?slug=${slug}`));
 	},
 
 	async getMostPopularMovies() {

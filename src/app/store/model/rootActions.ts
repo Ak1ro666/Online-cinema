@@ -1,4 +1,4 @@
-import * as userActions from '@/entities/User/model/actions/user.actions';
+import * as userActions from '@/features/User/model/actions/user.actions'
 
 export const rootActions = {
 	...userActions,

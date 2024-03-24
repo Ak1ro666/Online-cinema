@@ -1,13 +1,13 @@
-import { GetStaticProps, NextPage } from 'next';
-import { getActorUrl, getMovieUrl } from '@/shared/config/url.config';
+import { getActorUrl, getOneMovieUrl } from '@/shared/config/url.config'
+import { GetStaticProps, NextPage } from 'next'
 
-import { ActorService } from '@/shared/services/actor.service';
-import { Home } from '@/pages/home';
-import { IGalleryItem } from '@/entities/Gallery/types/gallery.interface';
-import { IHome } from '@/pages/home/types/home.interface';
-import { ISlide } from '@/entities/Slider/types/slider.interface';
-import { MovieService } from '@/shared/services/movie.service';
-import { getGenresList } from '@/shared/utils/movie/getGenresListEach';
+import { Home } from '@/pages/home'
+import { IHome } from '@/pages/home/types/home.interface'
+import { ActorService } from '@/shared/services/actor.service'
+import { MovieService } from '@/shared/services/movie.service'
+import { getGenresList } from '@/shared/utils/movie/getGenresListEach'
+import { IGalleryItem } from '@/widgets/Gallery/types/gallery.interface'
+import { ISlide } from '@/widgets/Slider/types/slider.interface'
 
 const HomePage: NextPage<IHome> = ({ slides, actors, trendingMovies }) => {
 	return <Home slides={slides} actors={actors} trendingMovies={trendingMovies} />;
@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 		const slides: ISlide[] = movies.slice(0, 3).map(m => ({
 			id: m.id,
-			link: getMovieUrl(m.slug),
+			link: getOneMovieUrl(m.slug),
 			bigPoster: m.bigPoster,
 			subTitle: getGenresList(m.genres),
 			title: m.title,
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		const trendingMovies: IGalleryItem[] = dataMovie.slice(0, 7).map(a => ({
 			name: a.title,
 			posterPath: a.poster,
-			link: getMovieUrl(a.slug),
+			link: getOneMovieUrl(a.slug),
 		}));
 
 		return {

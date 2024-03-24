@@ -1,5 +1,5 @@
-import { IUser } from '@/entities/User/model/types/user.interface'
+import { IUser } from '@/features/User/model/types/user.interface'
 
-export interface IUserEdit extends Omit<IUser, 'id'> {
+export interface IUserEdit extends IUser {
 	isAdmin: boolean
 }

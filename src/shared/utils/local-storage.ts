@@ -1,8 +1,7 @@
-import { ACCESS_TOKEN } from '@/shared/config/auth.config';
-import { IS_CLIENT_LOCAL_STORAGE } from '@/shared/constants/constants';
-
-import { IAuthResponse } from '@/entities/User';
-import { IToken } from '@/entities/User/model/types/user.interface';
+import { IAuthResponse } from '@/features/User'
+import { IToken } from '@/features/User/model/types/user.interface'
+import { ACCESS_TOKEN } from '@/shared/config/auth.config'
+import { IS_CLIENT_LOCAL_STORAGE } from '@/shared/constants/constants'
 
 export const getStoreLocal = (name: string) => {
 	if (IS_CLIENT_LOCAL_STORAGE) {

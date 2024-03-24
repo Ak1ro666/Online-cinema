@@ -1,5 +1,5 @@
-import { IGalleryItem } from '@/entities/Gallery/types/gallery.interface';
-import { ISlide } from '@/entities/Slider/types/slider.interface';
+import { IGalleryItem } from '@/widgets/Gallery/types/gallery.interface'
+import { ISlide } from '@/widgets/Slider/types/slider.interface'
 
 export interface IHome {
 	slides: ISlide[];

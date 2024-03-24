@@ -1,20 +1,19 @@
-import { IProfileInput, IProfileProps } from '../types/profile.interface';
-
-import { AuthFields } from '@/shared/ui/model/AuthFields'
 import { Button } from '@/shared/ui/ui/Button'
 import { FC } from 'react';
 import { Heading } from '@/shared/ui/ui/Heading'
+import { IUserEdit } from '@/pages/userEdit/types/user-edit.interface'
+import { Input } from '@/shared/ui/ui/Input'
 import Meta from '@/shared/utils/meta/Meta'
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader'
 import styles from './Profile.module.scss';
 import { useForm } from 'react-hook-form'
 import { useProfile } from '@/pages/profile/hooks/useProfile'
 
-export const Profile: FC<IProfileProps> = () => {
+export const Profile: FC = () => {
 
-	const {handleSubmit, register, formState, setValue} = useForm<IProfileInput>({
+	const {handleSubmit, register, formState: { errors }, setValue} = useForm<IUserEdit>({
 		mode: 'onChange'
-	})	
+	})
 
 	const { onSubmit, isLoading } = useProfile(setValue)
 
@@ -23,11 +22,15 @@ export const Profile: FC<IProfileProps> = () => {
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<Heading title="Profile" className="mb-6" />
 			{
-				isLoading ? <SkeletonLoader count={2} /> : <AuthFields formState={formState} register={register} /> 
-			}
+				isLoading ? <SkeletonLoader className='mb-4' count={2} /> : (
+								<Input
+									{...register('email', { required: 'Email is required' })}
+									placeholder="Email"
+									error={errors.email}
+								/>
+				)}
 			
-		
-		
+			
 			<div className={styles.buttons}>
 				<Button type="submit" disabled={isLoading}>
 						Update

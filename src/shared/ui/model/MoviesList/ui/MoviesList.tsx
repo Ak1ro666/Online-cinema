@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import { FC } from 'react';
-
-import { MovieItem } from '@/shared/ui/model/MovieItem';
 import { IMoviesList } from '@/shared/ui/model/MoviesList/types/movies-list.interface';
-
+import Link from 'next/link';
+import { MovieItem } from '@/entities/MovieItem';
 import styles from './MoviesList.module.scss';
 
 export const MoviesList: FC<IMoviesList> = ({ link, title, movies }) => {

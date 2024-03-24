@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { AuthForm } from '@/features/auth'
+import { AuthForm } from '@/widgets/AuthForm'
 import Meta from '@/shared/utils/meta/Meta';
 import styles from './Auth.module.scss';
 import { useAuth } from '@/shared/hooks/useAuth';

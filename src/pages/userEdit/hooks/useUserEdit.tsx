@@ -4,7 +4,6 @@ import { useMutation, useQuery } from 'react-query';
 import { IUserEdit } from '@/pages/userEdit/types/user-edit.interface';
 import { UserService } from '@/shared/services/user.service';
 import { getAdminUrl } from '@/shared/config/url.config';
-import { getKeys } from '@/shared/utils/object/getKeys';
 import { toastr } from 'react-redux-toastr';
 import { useRouter } from 'next/router';
 
@@ -31,7 +30,7 @@ export const useUserEdit = (setValue: UseFormSetValue<IUserEdit>) => {
 		mutationFn: (data: IUserEdit) => UserService.update(userId, data),
 		onSuccess: () => {
 			toastr.success('Update user', 'update was updated');
-			push(getAdminUrl('user'));
+			push(getAdminUrl('users'));
 		},
 		onError: error => {
 			toastr.error(error as unknown as string, 'Update actor');
