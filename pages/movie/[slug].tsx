@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		const { data: movies } = await MovieService.getAll();
 
 		const paths = movies.map((movie: IMovie) => ({
-			params: { slug: movie.slug },
+			params: { slug: movie.slug.replace('/', '') },
 		}));
 	
 		return {
