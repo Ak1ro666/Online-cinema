@@ -1,8 +1,8 @@
-import { login, logout, register } from '@/features/User/model/actions/user.actions'
+import { login, logout, register } from '@/entities/User/model/actions/user.actions';
 
-import { IInitialState } from '@/features/User/model/types/user.interface'
-import { getStoreLocal } from '@/shared/utils/local-storage'
-import { createSlice } from '@reduxjs/toolkit'
+import { IInitialState } from '@/entities/User/model/types/user.interface';
+import { getStoreLocal } from '@/shared/utils/local-storage';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState: IInitialState = {
 	user: getStoreLocal('user'),

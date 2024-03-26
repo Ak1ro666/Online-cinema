@@ -1,8 +1,8 @@
-import { IAuthResponse, IEmailPassword } from '@/features/User/model/types/user.interface'
+import { IAuthResponse, IEmailPassword } from '@/entities/User/model/types/user.interface';
 
-import { AuthService } from '@/shared/services/auth.servicer'
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { toastr } from 'react-redux-toastr'
+import { AuthService } from '@/shared/services/auth.servicer';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toastr } from 'react-redux-toastr';
 
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
 	'user/register',

@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { useQuery } from 'react-query';
 
-import { getMoviesUrl } from '@/shared/config/api.config';
 import { MovieService } from '@/shared/services/movie.service';
 import { IMovie } from '@/shared/types/movie.types';
 import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import { SubHeading } from '@/shared/ui/ui/SubHeading';
 
 import styles from './PopularMovie.module.scss';
+import { getOneMovieUrl } from '@/shared/config/url.config';
 
 export const PopularMovie: FC = () => {
 	const { data: movie, isLoading } = useQuery({
@@ -29,7 +29,7 @@ export const PopularMovie: FC = () => {
 				movie && (
 					<>
 						<h3>Opened {movie.countOpened} times</h3>
-						<Link href={getMoviesUrl() + `/${movie.slug}`}>
+						<Link href={getOneMovieUrl(`${movie.slug}`)}>
 							<Image
 								width={285}
 								height={176}

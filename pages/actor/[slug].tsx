@@ -13,8 +13,6 @@ interface IGenrePage {
 }
 
 const GenrePage: NextAuthPage<IGenrePage> = ({ movies, actor }) => {
-	console.log(movies)
-
 	return actor ? <Catalog title={actor[0].name || ''} movies={movies || []} /> : <NotFoundPage />;
 };
 

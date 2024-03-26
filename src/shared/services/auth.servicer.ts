@@ -1,12 +1,11 @@
-import { IAuthResponse, IEmailPassword } from '@/features/User/index'
-import { getAuthUrl, getRegisterUrl } from '@/shared/config/api.config'
-import { removeTokenToStorage, saveUserToStorage } from '@/shared/utils/local-storage'
+import { IAuthResponse, IEmailPassword } from '@/entities/User/index';
+import { getAuthUrl, getRegisterUrl } from '@/shared/config/api.config';
+import { removeTokenToStorage, saveUserToStorage } from '@/shared/utils/local-storage';
 
-import { axiosClassic } from '@/shared/api/interceptors'
-import { useRouter } from 'next/router'
+import { axiosClassic } from '@/shared/api/interceptors';
+import { useRouter } from 'next/router';
 
 export const AuthService = {
-
 	async register(userData: IEmailPassword) {
 		const { data } = await axiosClassic.post<IAuthResponse>(getRegisterUrl(), { ...userData, isAdmin: false });
 
@@ -22,8 +21,8 @@ export const AuthService = {
 	},
 	logout() {
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { push } = useRouter()
-		push('/')
+		const { push } = useRouter();
+		push('/');
 		removeTokenToStorage();
 		localStorage.removeItem('user');
 	},

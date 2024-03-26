@@ -11,8 +11,6 @@ import { useMovies } from '@/pages/movies/hooks/useMovies';
 export const MoviesList: FC = () => {
 	const { isLoading, data, handleSearch, searchTerm, deleteAsync } = useMovies();
 
-	console.log(data);
-
 	return (
 		<Meta title="Movies">
 			<AdminNavigation />

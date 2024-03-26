@@ -4,7 +4,7 @@ import { getAdminHomeUrl } from '@/shared/config/url.config';
 import { useAuth } from '@/shared/hooks/useAuth';
 import { MenuItem } from '@/shared/ui/model/MenuItem';
 
-import { LogoutButton } from '@/features/logoutSystem';
+import { LogoutButton } from '@/features/LogoutSystem';
 
 export const AuthItems: FC = () => {
 	const [hydrated, setHydrated] = useState(false);
