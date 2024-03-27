@@ -4,6 +4,7 @@ import { removeTokenToStorage, saveUserToStorage } from '@/shared/utils/local-st
 
 import { axiosClassic } from '@/shared/api/interceptors';
 import { useRouter } from 'next/router';
+import { ACCESS_TOKEN } from '@/shared/config/auth.config'
 
 export const AuthService = {
 	async register(userData: IEmailPassword) {
@@ -20,10 +21,7 @@ export const AuthService = {
 		return data;
 	},
 	logout() {
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { push } = useRouter();
-		push('/');
-		removeTokenToStorage();
 		localStorage.removeItem('user');
-	},
+		localStorage.removeItem(ACCESS_TOKEN);
+	}
 };

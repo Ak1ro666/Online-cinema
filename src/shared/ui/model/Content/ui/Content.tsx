@@ -5,9 +5,17 @@ import { FC } from 'react';
 import { IMovie } from '@/shared/types/movie.types';
 import { MaterialIcon } from '@/shared/ui/ui/MaterialIcon';
 import styles from './Content.module.scss';
-import { FavoriteButton } from '@/shared/ui/model/FavoriteButton';
+import { useAuth } from '@/shared/hooks/useAuth'
+import dynamic from 'next/dynamic'
+
+const DynamicFavoriteButton = dynamic(() => import('@/shared/ui/model/FavoriteButton').then(module => module.FavoriteButton), {
+	ssr: false
+})
 
 export const Content: FC<{ movie: IMovie }> = ({ movie }) => {
+
+	const { user } = useAuth()
+
 	return (
 		<div className={styles.content}>
 			<h1>{movie.title}</h1>
@@ -40,7 +48,7 @@ export const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				<span>{movie.rating.toFixed(1)}</span>
 			</div>
 
-			<FavoriteButton movie={movie} />
+			{user && <DynamicFavoriteButton movie={movie} />}
 		</div>
 	);
 };

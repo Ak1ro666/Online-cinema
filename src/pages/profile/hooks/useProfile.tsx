@@ -1,23 +1,22 @@
-import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
-import { useMutation, useQuery } from 'react-query'
+import { SubmitHandler, UseFormSetValue } from 'react-hook-form';
+import { useMutation, useQuery } from 'react-query';
 
-import { IUserEdit } from '@/pages/userEdit/types/user-edit.interface'
-import { UserService } from '@/shared/services/user.service'
-import { getStoreLocal } from '@/shared/utils/local-storage'
-import { toastr } from 'react-redux-toastr'
-import { useRouter } from 'next/router'
+import { IUserEdit } from '@/pages/userEdit/types/user-edit.interface';
+import { UserService } from '@/shared/services/user.service';
+import { getStoreLocal } from '@/shared/utils/local-storage';
+import { toastr } from 'react-redux-toastr';
+import { useRouter } from 'next/router';
 
 export const useProfile = (setValue: UseFormSetValue<IUserEdit>) => {
 	const { push } = useRouter();
 
-	const user = getStoreLocal('user') as IUserEdit
-	
+	const user = getStoreLocal('user') as IUserEdit;
 
 	const { isLoading, refetch } = useQuery({
 		queryKey: ['profile/edit', user.id],
 		queryFn: () => UserService.getById(user.id),
 		onSuccess: ({ data }) => {
-			setValue('email', data[0].email)
+			setValue('email', data[0].email);
 		},
 		onError: error => {
 			toastr.error(error as unknown as string, 'Get profile');
@@ -29,14 +28,14 @@ export const useProfile = (setValue: UseFormSetValue<IUserEdit>) => {
 		mutationFn: (data: IUserEdit) => UserService.update(user.id, data),
 		onSuccess: () => {
 			toastr.success('Update profile', 'update was updated');
-			push('/')
+			push('/');
 		},
 		onError: error => {
 			toastr.error(error as unknown as string, 'Update profile');
 		},
 		onSettled: () => {
-			refetch()
-		}
+			refetch();
+		},
 	});
 
 	const onSubmit: SubmitHandler<IUserEdit> = async data => {
@@ -44,4 +43,4 @@ export const useProfile = (setValue: UseFormSetValue<IUserEdit>) => {
 	};
 
 	return { onSubmit, isLoading };
-}
+};

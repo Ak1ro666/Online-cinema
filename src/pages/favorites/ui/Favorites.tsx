@@ -6,9 +6,11 @@ import { Heading } from '@/shared/ui/ui/Heading';
 import { useFavorites } from '@/shared/hooks/useFavorites';
 import { FavoriteItem } from '@/shared/ui/model/FavoriteItem';
 import { SubHeading } from '@/shared/ui/ui/SubHeading';
+import { useAuth } from '@/shared/hooks/useAuth';
 
 export const Favorites: FC = () => {
 	const { favorites } = useFavorites();
+	const { user } = useAuth();
 
 	return (
 		<Meta title="Favorites">

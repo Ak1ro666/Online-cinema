@@ -11,8 +11,6 @@ export const FavoritesMovies: FC = () => {
 
 	if (!user) return <NotAuthFavorites />;
 
-	console.log(!!favorites);
-
 	return favorites && favorites.length > 0 ? (
 		<FavoritesMoviesList link="/favorites" title="Favorites" movies={favorites?.slice(0, 3) || []} />
 	) : (

@@ -12,8 +12,6 @@ export const FavoriteButton: FC<{ movie: IMovie }> = ({ movie }) => {
 	const { addItemFavorites, removeItemFavorites } = useActions();
 	const { favorites } = useFavorites();
 
-	console.log(favorites);
-
 	useEffect(() => {
 		if (!favorites) return;
 
