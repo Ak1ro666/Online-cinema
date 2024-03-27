@@ -8,9 +8,9 @@ import { SkeletonLoader } from '@/shared/ui/ui/SkeletonLoader';
 import styles from './Profile.module.scss';
 import { useForm } from 'react-hook-form';
 import { useProfile } from '@/pages/profile/hooks/useProfile';
+import { useAuth } from '@/shared/hooks/useAuth';
 
 export const Profile: FC = () => {
-
 	const {
 		handleSubmit,
 		register,

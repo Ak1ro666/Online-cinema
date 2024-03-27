@@ -2,7 +2,6 @@ import { IAuthResponse, IEmailPassword } from '@/entities/User/model/types/user.
 
 import { AuthService } from '@/shared/services/auth.servicer';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { useRouter } from 'next/router'
 import { toastr } from 'react-redux-toastr';
 
 export const register = createAsyncThunk<IAuthResponse, IEmailPassword>(
@@ -34,7 +33,5 @@ export const login = createAsyncThunk<IAuthResponse, IEmailPassword>(
 );
 
 export const logout = createAsyncThunk('user/logout', async () => {
-	const { push } = useRouter()
-	await push('/')
 	await AuthService.logout();
 });
