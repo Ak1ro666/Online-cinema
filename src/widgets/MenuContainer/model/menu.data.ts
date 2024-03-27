@@ -9,9 +9,9 @@ export const firstMenu: IMenu = {
 			title: 'Home',
 		},
 		{
-			icon: 'MdExplore',
+			icon: 'MdFavorite',
 			link: '/favorites',
-			title: 'Discovery',
+			title: 'Favorites',
 		},
 		{
 			icon: 'MdRefresh',

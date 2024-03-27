@@ -60,7 +60,7 @@ export const VideoPlayer: FC<IVideoPlayer> = ({ slug, videoSources }) => {
 					</div>
 				</>
 			) : (
-				<AuthPlaceholder slug={slug} />
+				<AuthPlaceholder title="You must be logged in to start watching" slug={slug} />
 			)}
 		</div>
 	);
