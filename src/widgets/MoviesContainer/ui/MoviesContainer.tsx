@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { FavoritesMovies } from '@/shared/ui/model/FavoritesMovies';
 import { PopularMovies } from '@/widgets/PopularMovies';
 import dynamic from 'next/dynamic';
 

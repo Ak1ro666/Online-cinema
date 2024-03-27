@@ -1,0 +1,18 @@
+.favorites {
+	@apply flex flex-wrap mt-12;
+}
+
+.containerLoader {
+	@apply w-full flex flex-wrap;
+
+	.skeletonLoader {
+		@apply relative mb-8 h-44;
+		width: 31%;
+
+		&:nth-child(1),
+		&:nth-child(3) {
+			@apply mr-8;
+		}
+	}
+}
+

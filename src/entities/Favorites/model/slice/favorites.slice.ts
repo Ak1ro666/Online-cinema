@@ -13,11 +13,11 @@ export const favoritesSlice = createSlice({
 	initialState,
 	reducers: {
 		addItemFavorites(state, { payload: newItemFavorite }) {
-			state.favorites = [state.favorites, newItemFavorite];
+			state.favorites = state.favorites ? [...state.favorites, newItemFavorite] : [newItemFavorite];
 			saveStoreLocal(FAVORITES_TOKEN_LOCAL_STORAGE, state.favorites);
 		},
-		removeItemFavorites(state, { payload }) {
-			state.favorites?.filter(favorite => favorite.id !== payload);
+		removeItemFavorites(state, { payload: FavoriteId }) {
+			state.favorites = state.favorites ? state.favorites.filter(favorite => favorite.id !== FavoriteId) : null;
 			saveStoreLocal(FAVORITES_TOKEN_LOCAL_STORAGE, state.favorites);
 		},
 	},
@@ -26,4 +26,3 @@ export const favoritesSlice = createSlice({
 export const { reducer } = favoritesSlice;
 
 export const favoriteActions = favoritesSlice.actions;
-

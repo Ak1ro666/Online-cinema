@@ -7,14 +7,7 @@ import { MenuItem } from '@/shared/ui/model/MenuItem';
 import { LogoutButton } from '@/features/LogoutSystem';
 
 export const AuthItems: FC = () => {
-	const [hydrated, setHydrated] = useState(false);
 	const { user } = useAuth();
-	useEffect(() => {
-		setHydrated(true);
-	}, []);
-	if (!hydrated) {
-		return null;
-	}
 
 	return (
 		<>

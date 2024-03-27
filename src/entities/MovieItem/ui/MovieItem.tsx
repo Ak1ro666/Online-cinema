@@ -10,6 +10,7 @@ import { getGenresListEach } from '@/shared/utils/movie/getGenresListEach';
 import styles from './MovieItem.module.scss';
 
 export const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
+
 	return (
 		<div className={styles.item}>
 			<Link href={getOneMovieUrl(movie.slug)}>
@@ -21,7 +22,7 @@ export const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 				</div>
 				<div className={styles.genres}>
 					{movie.genres.map((genre, index) => (
-						<Link key={genre.name} href={getGenreUrl(genre.slug)}>
+						<Link key={`${genre.name}`} href={getGenreUrl(genre.slug)}>
 							{getGenresListEach(index, movie.genres.length, genre.name)}
 						</Link>
 					))}
