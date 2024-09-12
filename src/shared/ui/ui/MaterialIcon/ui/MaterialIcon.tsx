@@ -1,5 +1,4 @@
 import * as MaterialIcons from 'react-icons/md';
-
 import { FC, useState, useEffect } from 'react';
 import { TypeMaterialIconName } from '../types/icons.type';
 
@@ -9,10 +8,15 @@ export const MaterialIcon: FC<{ name: TypeMaterialIconName }> = ({ name }) => {
 	const [isRenderClient, setIsRenderClient] = useState<boolean>(true);
 
 	useEffect(() => {
-		isRenderClient && setIsRenderClient(false);
+		setIsRenderClient(false);
 	}, []);
 
-	if (isRenderClient) return;
+	if (isRenderClient) return null;
 
-	return <IconComponent /> || <MaterialIcons.MdDragIndicator />;
+	return (
+		<>
+			{IconComponent && <IconComponent />}
+			{!IconComponent && <MaterialIcons.MdDragIndicator />}
+		</>
+	);
 };
